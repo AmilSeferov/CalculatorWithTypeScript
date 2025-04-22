@@ -1,10 +1,18 @@
+import { useState } from "react";
 import "./App.css";
 import { LuDelete } from "react-icons/lu";
 function App() {
   const divs: any = [];
+  const [value,setvalue]=useState<string>('0')
   for (let i: number = 0; i < 9; i++) {
     divs.push(
       <div
+      onClick={()=>{
+        if(value==='0'){
+         setvalue(`${i+1}`)
+        }else{
+        setvalue(value+(i+1))}
+      }}
         className="bg-stone-800 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center"
         key={i}
       >
@@ -17,14 +25,16 @@ function App() {
   return (
     <>
       <div className="w-full  h-screen grid justify-center items-center bg-gradient-to-b from-sky-400 to-blue-800">
-       <div className="p-[10px] bg-gradient-to-b from-gray-700 to-gray-500 rounded-[10px]">
+       <div className="p-[10px] bg-gradient-to-b from-gray-700 to-gray-500 rounded-[10px] border-[1px] border-gray-800">
        <div className="w-fit h-fit bg-stone-900 rounded-[10px] grid-rows-2 ">
-          <div className="h-[100px] w-full p-[10px] rounded-[10px]">
-            <p className="text-white">0</p>
+          <div className="h-[100px] w-full p-[10px] rounded-[10px] grid justify-end items-end">
+            <p className="text-white">{value}</p>
           </div>
           <div className="grid grid-cols-[3fr_1fr] cursor-pointer grid-rows-[1fr_4fr] p-[10px]">
             <div className="grid grid-cols-4 gap-x-3 row-1 col-span-2">
-              <div className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center ">
+              <div onClick={()=>{
+                setvalue('0')
+              }} className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center ">
                 AC
               </div>
               <div className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center ">
@@ -42,7 +52,12 @@ function App() {
               <div className="bg-orange-500 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-1">
                 .
               </div>
-              <div className="bg-stone-800 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-2">
+              <div onClick={()=>{
+        if(value==='0'){
+         setvalue('0')
+        }else{
+        setvalue(value+('0'))}
+      }} className="bg-stone-800 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-2">
                 0
               </div>
               <div className="bg-orange-900 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-3">
