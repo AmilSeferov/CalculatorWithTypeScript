@@ -17,7 +17,8 @@ function App() {
   return (
     <>
       <div className="w-full  h-screen grid justify-center items-center bg-gradient-to-b from-sky-400 to-blue-800">
-        <div className="w-fit h-fit bg-stone-900 rounded-[10px] grid-rows-2 ">
+       <div className="p-[10px] bg-gradient-to-b from-gray-700 to-gray-500 rounded-[10px]">
+       <div className="w-fit h-fit bg-stone-900 rounded-[10px] grid-rows-2 ">
           <div className="h-[100px] w-full p-[10px] rounded-[10px]">
             <p className="text-white">0</p>
           </div>
@@ -64,6 +65,7 @@ function App() {
             </div>
           </div>
         </div>
+       </div>
       </div>
     </>
   );
