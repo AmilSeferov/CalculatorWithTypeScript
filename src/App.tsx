@@ -4,7 +4,7 @@ import { LuDelete } from "react-icons/lu";
 function App() {
   const divs: any = [];
   const [value, setvalue] = useState<string>("0");
-const [result,setResult]=useState<number>(0)
+  const [oldcalc, setOldcalc] = useState<string>("");
   for (let i: number = 0; i < 9; i++) {
     divs.push(
       <div
@@ -30,16 +30,29 @@ const [result,setResult]=useState<number>(0)
         <div className="p-[10px] bg-gradient-to-b from-gray-700 to-gray-500 rounded-[10px] border-[1px] border-gray-800">
           <div className="w-fit h-fit bg-stone-900 rounded-[10px] grid-rows-2 ">
             <div className="h-[100px] w-full p-[10px] rounded-[10px] grid justify-end items-end">
-              <p className="text-white">{value}</p>
-              <p  className={result? "text-white w-fit grid justify-end":'hidden'}>=</p>
-              <p className={result? "text-white w-fit grid justify-end":'hidden'}>{result}</p>
+              <p
+                className={
+                  oldcalc ? "text-stone-400  grid justify-end" : "hidden"
+                }
+              >
+                {oldcalc}
+              </p>
+              <p
+                className={
+                  oldcalc ? "text-stone-400 text-end grid justify-end" : "hidden"
+                }
+              >
+                =
+              </p>
+
+              <p className="text-white text-end">{value}</p>
             </div>
             <div className="grid grid-cols-[3fr_1fr] cursor-pointer grid-rows-[1fr_4fr] p-[10px]">
               <div className="grid grid-cols-4 gap-x-3 row-1 col-span-2">
                 <div
                   onClick={() => {
                     setvalue("0");
-                    setResult(0)
+                    setOldcalc('');
                   }}
                   className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center "
                 >
@@ -51,14 +64,16 @@ const [result,setResult]=useState<number>(0)
                 <div className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center ">
                   %
                 </div>
-                <div onClick={()=>{
-                  if(value.length!==1){
-                    setvalue(value.slice(0,-1))
-                  }else{
-                    setvalue('0')
-                  }
-                  
-                }} className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center ">
+                <div
+                  onClick={() => {
+                    if (value.length !== 1) {
+                      setvalue(value.slice(0, -1));
+                    } else {
+                      setvalue("0");
+                    }
+                  }}
+                  className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center "
+                >
                   <LuDelete />
                 </div>
               </div>
@@ -79,9 +94,14 @@ const [result,setResult]=useState<number>(0)
                 >
                   0
                 </div>
-                <div onClick={()=>{
-                  setResult(eval(value))
-                }} className="bg-orange-900 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-3">
+                <div
+                  onClick={() => {
+                    setOldcalc(value)
+                    setvalue(`${eval(value)}`)
+                    
+                  }}
+                  className="bg-orange-900 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-3"
+                >
                   =
                 </div>
               </div>
@@ -106,18 +126,24 @@ const [result,setResult]=useState<number>(0)
                 >
                   +
                 </div>
-                <div  onClick={() => {
+                <div
+                  onClick={() => {
                     if (value !== "0") {
                       setvalue(value + "/");
                     }
-                  }} className="bg-orange-500 w-[55px] h-[30px] rounded-full text-white grid justify-center col-2">
+                  }}
+                  className="bg-orange-500 w-[55px] h-[30px] rounded-full text-white grid justify-center col-2"
+                >
                   /
                 </div>
-                <div   onClick={() => {
+                <div
+                  onClick={() => {
                     if (value !== "0") {
                       setvalue(value + "*");
                     }
-                  }} className="bg-orange-500 w-[55px] h-[30px] rounded-full text-white grid justify-center col-2">
+                  }}
+                  className="bg-orange-500 w-[55px] h-[30px] rounded-full text-white grid justify-center col-2"
+                >
                   *
                 </div>
               </div>
