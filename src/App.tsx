@@ -39,7 +39,9 @@ function App() {
               </p>
               <p
                 className={
-                  oldcalc ? "text-stone-400 text-end grid justify-end" : "hidden"
+                  oldcalc
+                    ? "text-stone-400 text-end grid justify-end"
+                    : "hidden"
                 }
               >
                 =
@@ -52,16 +54,26 @@ function App() {
                 <div
                   onClick={() => {
                     setvalue("0");
-                    setOldcalc('');
+                    setOldcalc("");
                   }}
                   className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center "
                 >
                   AC
                 </div>
-                <div className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center ">
+                <div
+                  onClick={() => {
+                    setvalue(value + "!");
+                  }}
+                  className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center "
+                >
                   !
                 </div>
-                <div className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center ">
+                <div
+                  onClick={() => {
+                    setvalue(value + "%");
+                  }}
+                  className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center "
+                >
                   %
                 </div>
                 <div
@@ -96,9 +108,8 @@ function App() {
                 </div>
                 <div
                   onClick={() => {
-                    setOldcalc(value)
-                    setvalue(`${eval(value)}`)
-                    
+                    setOldcalc(value);
+                    setvalue(`${eval(value)}`);
                   }}
                   className="bg-orange-900 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-3"
                 >
