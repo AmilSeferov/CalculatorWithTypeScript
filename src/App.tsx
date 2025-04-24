@@ -91,7 +91,11 @@ function App() {
               </div>
               <div className="w-full grid grid-cols-3 row-2 gap-3  justify-center ">
                 {divs}
-                <div className="bg-orange-500 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-1">
+                <div 
+                onClick={()=>{
+                  setvalue(value +'.')
+                }}
+                 className="bg-orange-500 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-1">
                   .
                 </div>
                 <div
