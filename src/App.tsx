@@ -8,7 +8,7 @@ function App() {
   const regex: RegExp = /[=\-\+\*\.\%]$/;
   for (let i: number = 0; i < 9; i++) {
     divs.push(
-      <div
+      <div 
         onClick={() => {
           if (value === "0") {
             setvalue(`${i + 1}`);
@@ -16,7 +16,7 @@ function App() {
             setvalue(value + (i + 1));
           }
         }}
-        className="bg-stone-800 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center"
+        className="bg-stone-800 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center shadow-2xs shadow-stone-500 hover:shadow-stone-800 "
         key={i}
       >
         {" "}
@@ -100,7 +100,7 @@ function App() {
                       setvalue(value + ".");
                     }
                   }}
-                  className="bg-orange-500 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-1"
+                  className="bg-orange-500 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-1 "
                 >
                   .
                 </div>
@@ -112,7 +112,7 @@ function App() {
                       setvalue(value + "0");
                     }
                   }}
-                  className="bg-stone-800 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-2"
+                  className="bg-stone-800 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-2 shadow-2xs shadow-stone-500 hover:shadow-stone-800 "
                 >
                   0
                 </div>
