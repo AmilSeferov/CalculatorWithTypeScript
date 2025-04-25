@@ -63,7 +63,10 @@ function App() {
                 </div>
                 <div
                   onClick={() => {
+                    if( !regex.test(value)){ 
+
                     setvalue(value + "!");
+                  }
                   }}
                   className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center "
                 >
