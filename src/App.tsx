@@ -5,6 +5,7 @@ function App() {
   const divs: any = [];
   const [value, setvalue] = useState<string>("0");
   const [oldcalc, setOldcalc] = useState<string>("");
+  const regex: RegExp = /[=\-\+\*\.\%]$/; 
   for (let i: number = 0; i < 9; i++) {
     divs.push(
       <div
@@ -70,7 +71,8 @@ function App() {
                 </div>
                 <div
                   onClick={() => {
-                    setvalue(value + "%");
+                    if(!regex.test(value)){
+                    setvalue(value + "%");}
                   }}
                   className="bg-orange-600 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center "
                 >
@@ -93,7 +95,8 @@ function App() {
                 {divs}
                 <div 
                 onClick={()=>{
-                  setvalue(value +'.')
+                  if(!regex.test(value)){
+                    setvalue(value + ".");}
                 }}
                  className="bg-orange-500 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-1">
                   .
@@ -113,7 +116,13 @@ function App() {
                 <div
                   onClick={() => {
                     setOldcalc(value);
+                   console.log( value.indexOf('!'))
+                   if(regex.test(value)){
+                    setvalue(`${eval(value.slice(0,-1))}`);
+                   }else{
                     setvalue(`${eval(value)}`);
+                   }
+                   
                   }}
                   className="bg-orange-900 w-[55px] h-[30px] rounded-full text-white grid justify-center items-center col-3"
                 >
@@ -123,7 +132,7 @@ function App() {
               <div className="grid grid-cols-1 row-2 gap-3 ">
                 <div
                   onClick={() => {
-                    if (value !== "0") {
+                    if (value !== "0"&&!regex.test(value)) {
                       setvalue(value + "-");
                     }
                   }}
@@ -133,7 +142,7 @@ function App() {
                 </div>
                 <div
                   onClick={() => {
-                    if (value !== "0") {
+                    if (value !== "0"&&!regex.test(value)) {
                       setvalue(value + "+");
                     }
                   }}
@@ -143,7 +152,7 @@ function App() {
                 </div>
                 <div
                   onClick={() => {
-                    if (value !== "0") {
+                    if (value !== "0"&&!regex.test(value)) {
                       setvalue(value + "/");
                     }
                   }}
@@ -153,7 +162,7 @@ function App() {
                 </div>
                 <div
                   onClick={() => {
-                    if (value !== "0") {
+                    if (value !== "0"&&!regex.test(value)) {
                       setvalue(value + "*");
                     }
                   }}
